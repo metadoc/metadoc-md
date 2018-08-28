@@ -1,0 +1,23 @@
+{
+  "name": "@author.io/metadoc-md",
+  "version": "0.0.1",
+  "description": "Parse markdown code within description attributes of a metadoc output file.",
+  "bin": "cli.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "tap -R spec test/*.js | standard --verbose | snazzy"
+  },
+  "keywords": [
+    "metadoc",
+    "markdown",
+    "md",
+    "gfm"
+  ],
+  "author": "Corey Butler",
+  "license": "MIT",
+  "dependencies": {
+    "marked": "^0.5.0",
+    "minimist-string": "^1.0.2",
+    "traverse": "^0.6.6"
+  }
+}
