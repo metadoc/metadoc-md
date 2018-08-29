@@ -80,7 +80,7 @@ As shown above, metadoc-md identifies mermaid code and generates the HTML contai
 
 Generating the SVG graphic can be done in the browser at runtime. The [mermaid UI library](https://www.jsdelivr.com/package/npm/mermaid) can parse the HTML and replace it with an SVG graphic. See the [usage instructions](https://mermaidjs.github.io/mermaidAPI.html)) for detail. As example, the output from metadoc-md could be used to generate an image like:
 
-![Mermaid Graph](![Output](https://github.com/author/metadoc-md/raw/master/mermaid.png))
+![Mermaid Graph](https://github.com/author/metadoc-md/raw/master/mermaid.png)
 
 ### Recognized Mermaid Types
 
