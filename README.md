@@ -12,23 +12,23 @@ _Metadoc output after metadoc-md:_
 
 ## Usage
 
-This processor can be run standalone or as a part of a metadoc build process.
+This post-processor can be run standalone or as a part of a metadoc build process.
 
 To run as a standalone CLI application, the utility must be installed globally:
 
 `npm install -g @author.io/metadoc-md`
 
-It can then be run as:
+It can then be used from the command line:
 
 ```sh
 metadoc-md --source /path/to/metadoc/api.json
 ```
 
-Alternatively, it can be run as part of a series of metadoc processors. In this scenario, the module should be saved as part o the `devDependencies`:
+Alternatively, it metadoc-md can be a part of a series of metadoc post-processors. In this scenario, the module should be saved as part of the `devDependencies`:
 
 `npm install @author.io/metadoc-md --save-dev`
 
-It can then be used as a part of the metadoc generation process:
+It can then be applied as a piped command to the metadoc generation process:
 
 ```sh
 metadoc --source ./src --output ./docs --warnskippedevents --warnnocode --ignore ./work/in/progress | metadoc-md
@@ -36,9 +36,14 @@ metadoc --source ./src --output ./docs --warnskippedevents --warnnocode --ignore
 
 ## Additional Flags
 
-Each flag (except `--output`) can receive a `true`/`false` to enable/disable a feature. For example, to explicitly disable GFM, use `--gfm false`.
+_Common Flags:_
 
-- `--output` Specify a custom output file name.
+- `--output` Specify a custom output file (relative or absolute path).
+
+_Boolean Flags:_
+
+Each boolean flag (except `--output`) can receive a `true`/`false` value to enable/disable a feature. For example, to disable GFM, use `--gfm false`. If no value is supplied, it is assumed to be `true`. This means `--gfm` is the same as `--gfm true`.
+
 - `--pedantic` Conform to the original markdown.pl as much as possible. Don't fix original markdown bugs or behavior. Turns off and overrides gfm.
 - `--gfm` Apply [Github Flavored Markdown](https://github.github.com/gfm/). Enabled by default
 - `--tables` When using `gfm`, use [GFM Tables extension](https://github.github.com/gfm/#tables-extension-). Enabled by default.
@@ -78,7 +83,7 @@ _Metadoc output after metadoc-md:_
 </div>
 ```
 
-As shown above, metadoc-md identifies mermaid code and generates an HTML container for it with an automatic ID. However; it does not generate the SVG graphic. Mermaid provides a browser [browser library](https://www.jsdelivr.com/package/npm/mermaid) for this, which can parse the HTML and replace it with an SVG graphic. See the [usage instructions](https://mermaidjs.github.io/mermaidAPI.html)) for detail.
+As shown above, metadoc-md identifies mermaid code and generates an HTML container for it with an automatic ID. However; it does not generate the SVG graphic. Mermaid provides a [browser library](https://www.jsdelivr.com/package/npm/mermaid) for this, which can parse the HTML and replace it with an SVG graphic. See the [usage instructions](https://mermaidjs.github.io/mermaidAPI.html)) for detail.
 
 ### Recognized Mermaid Types
 
