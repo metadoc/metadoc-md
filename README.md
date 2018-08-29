@@ -82,6 +82,14 @@ Generating the SVG graphic can be done in the browser at runtime. The [mermaid U
 
 ![Mermaid Graph](https://mermaidjs.github.io/mermaid-live-editor/#/view/eyJjb2RlIjoiZ3JhcGggTFJcbmEtLT5iO1xuYi0tPmM7IiwibWVybWFpZCI6eyJ0aGVtZSI6ImRlZmF1bHQifX0)
 
+### Recognized Mermaid Types
+
+- sequenceDiagram
+- classDiagram
+- graph (flowcharts)
+- gitGraph
+- gantt
+
 ## MathJAX Support
 
 [MathJax](http://mathjax.org/) will generate mathematical displays from standard text. Metadoc-md supports this using a markdown-like approach to identify MathJax equations.

@@ -136,7 +136,7 @@ class Parser extends EventEmitter {
 
     renderer.code = function (code, language, escaped) {
       // Mermaid Support
-      if (code.match(/^sequenceDiagram/)||code.match(/^graph/)||code.match(/^gantt/) || language === 'sequenceDiagram' || language === 'graph' || language === 'gantt' && code !== '' || language === 'mermaid') {
+      if (code.match(/^sequenceDiagram/) || code.match(/^classDiagram/) || code.match(/^gitGraph/) || code.match(/^graph/) || code.match(/^gantt/) || language === 'sequenceDiagram' || language === 'classDiagram' || language === 'graph' ||  language === 'gitGraph' || (language === 'gantt' && code !== '') || language === 'mermaid') {
         return `<div class="mermaid ${language}">${code}</div>`
       }
 
