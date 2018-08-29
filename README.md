@@ -1,6 +1,6 @@
 # metadoc-md
 
-This [metadoc](https://github.com/author/metadoc) post-processor will convert any markdown, mermaid, or MathJax code within description attributes of a metadoc into  HTML.
+This [metadoc](https://github.com/author/metadoc) post-processor will convert markdown, mermaid, or MathJax snippets within a metadoc's description attributes into HTML.
 
 _Metadoc output before metadoc-md:_
 
