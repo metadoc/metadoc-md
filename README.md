@@ -52,7 +52,9 @@ These features are all implemented by passing configuration values into [marked 
 
 ## Mermaid Support
 
-[Mermaid](https://github.com/knsv/mermaid) is a powerful utility for generating graphical SVG diagrams from text. It follows a markdown-like approach. metadoc-md can identify mermaid code.
+![Mermaid Graph](https://github.com/author/metadoc-md/raw/master/mermaid.png)
+
+[Mermaid](https://github.com/knsv/mermaid) generates graphical SVG diagrams from text. It follows a markdown-like approach. metadoc-md identifies mermaid text and converts it to an HTML-friendly format.
 
 For example:
 
@@ -76,11 +78,7 @@ _After metadoc-md:_
 </div>
 ```
 
-As shown above, metadoc-md identifies mermaid code and generates the HTML container for it. However; it does not generate any SVG graphics.
-
-Generating the SVG graphic can be done in the browser at runtime. The [mermaid UI library](https://www.jsdelivr.com/package/npm/mermaid) can parse the HTML and replace it with an SVG graphic. See the [usage instructions](https://mermaidjs.github.io/mermaidAPI.html)) for detail. As example, the output from metadoc-md could be used to generate an image like:
-
-![Mermaid Graph](https://github.com/author/metadoc-md/raw/master/mermaid.png)
+As shown above, metadoc-md identifies mermaid code and generates an HTML container for it with an automatic ID. However; it does not generate the SVG graphic. Mermaid provides a browser [browser library](https://www.jsdelivr.com/package/npm/mermaid) for this, which can parse the HTML and replace it with an SVG graphic. See the [usage instructions](https://mermaidjs.github.io/mermaidAPI.html)) for detail.
 
 ### Recognized Mermaid Types
 
@@ -92,7 +90,9 @@ Generating the SVG graphic can be done in the browser at runtime. The [mermaid U
 
 ## MathJAX Support
 
-[MathJax](http://mathjax.org/) will generate mathematical displays from standard text. Metadoc-md supports this using a markdown-like approach to identify MathJax equations.
+![MathJax](https://github.com/author/metadoc-md/raw/master/mathjax.png)
+
+[MathJax](http://mathjax.org/) will generate equation displays from text. Metadoc-md identifies these equations using a markdown-like approach.
 
 For example:
 
@@ -112,12 +112,4 @@ _After metadoc-md:_
 </div>
 ```
 
-As shown above, metadoc-md identifies MathJax code and generates the HTML container for it. Notice the language is `math-tex`, indicating the equation content is LaTeX format. `math-inlinetex`, `math-asciimath`, and `math-mathml` are also supported. However; this does not generate any graphics.
-
-Generating a graphic can be done in the browser at runtime. See the [MathJax Getting Started Guide](https://www.mathjax.org/#gettingstarted) for details.
-
-The runtime library can generate images, such as this:
-
-<div style="text-align: center; width: 100%;">
-![MathJax](![Input](https://github.com/author/metadoc-md/raw/master/mathjax.png))
-</div>
+As shown above, metadoc-md identifies MathJax code and generates the HTML container for it. Notice the language is `math-tex`, indicating the equation content is LaTeX format. `math-inlinetex`, `math-asciimath`, and `math-mathml` are also supported by MathJax. However; metadoc-md does not generate any graphics. The [MathJax Getting Started Guide](https://www.mathjax.org/#gettingstarted) provides instructions for generating the graphics in the browser.
