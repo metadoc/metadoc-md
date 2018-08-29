@@ -2,11 +2,11 @@
 
 This [metadoc](https://github.com/author/metadoc) post-processor will convert any markdown, mermaid, or MathJax code within description attributes of a metadoc into  HTML.
 
-**Metadoc output before metadoc-md:**
+_Metadoc output before metadoc-md:_
 
 ![Input](https://github.com/author/metadoc-md/raw/master/input.png)
 
-**Metadoc output after metadoc-md:**
+_Metadoc output after metadoc-md:_
 
 ![Output](https://github.com/author/metadoc-md/raw/master/output.png)
 
