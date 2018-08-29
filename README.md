@@ -58,13 +58,13 @@ For example:
 
 _Before metadoc-md:_
 
-```sh
-\`\`\`mermaid
+````
+```mermaid
 graph LR
 a-->b;
 b-->c;
-\`\`\`
 ```
+````
 
 _After metadoc-md:_
 
@@ -98,11 +98,11 @@ For example:
 
 _Before metadoc-md:_
 
-```sh
-\`\`\`math-tex
+````
+```math-tex
 x = {-b \pm \sqrt{b^2-4ac} \over 2a}
-\`\`\`
 ```
+````
 
 _After metadoc-md:_
 
