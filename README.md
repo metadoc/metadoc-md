@@ -1,12 +1,12 @@
 # metadoc-md
 
-This [metadoc](https://github.com/author/metadoc) post-processor will convert the markdown of description attributes in a metadoc to  HTML.
+This [metadoc](https://github.com/author/metadoc) post-processor will convert any markdown, mermaid, or MathJax code within description attributes of a metadoc into  HTML.
 
-**Before metadoc-md:**
+**Metadoc output before metadoc-md:**
 
 ![Input](https://github.com/author/metadoc-md/raw/master/input.png)
 
-**After metadoc-md:**
+**Metadoc output after metadoc-md:**
 
 ![Output](https://github.com/author/metadoc-md/raw/master/output.png)
 
@@ -58,7 +58,7 @@ These features are all implemented by passing configuration values into [marked 
 
 For example:
 
-_Before metadoc-md:_
+_Metadoc output before metadoc-md:_
 
 ````
 ```mermaid
@@ -68,7 +68,7 @@ b-->c;
 ```
 ````
 
-_After metadoc-md:_
+_Metadoc output after metadoc-md:_
 
 ```html
 <div id="mermaid1" class="mermaid">
