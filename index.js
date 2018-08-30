@@ -1,8 +1,6 @@
 const marked = require('marked')
-const mathjax = require('mathjax-node')
 const traverse = require('traverse')
-const EventEmitter = require('events')
-const fs = require('fs')
+const MetadocPlugin = require('@author.io/metadoc-plugin')
 
 // NOTICE: Mermaid doesn't support server side SVG Rendering yet
 // due to lack of dependencies on JSDOM and deprecation of PhantomJS.
@@ -18,7 +16,7 @@ const fs = require('fs')
 //   })
 // }
 
-class Parser extends EventEmitter {
+class Parser extends MetadocPlugin {
   constructor () {
     super(...arguments)
 
@@ -32,8 +30,6 @@ class Parser extends EventEmitter {
       xhtml: false,
       svg: true
     }
-
-    this.SOURCE = ''
   }
 
   get pedantic () {
@@ -92,40 +88,13 @@ class Parser extends EventEmitter {
     this.md.xhtml = value
   }
 
-  get source () {
-    return this.SOURCE
-  }
-
-  set source (value) {
-    let data = value
-    let filepath
-
-    try {
-      data = require(require('path').resolve(value))
-      this.SOURCE = data
-    } catch (e) {
-      data = data.split('{')
-      data.shift()
-      data = `{${data.join('{')}`
-
-      try {
-        this.SOURCE = JSON.parse(data)
-      } catch (e) {
-        console.error(e)
-        process.exit(1)
-      }
-    }
-
-    this.emit('source', data)
-  }
-
   process () {
-    const me = this
-
     let mermaidId = 0
+    let mathId = 0
     let renderer = new marked.Renderer()
 
     // Add mermaid SVG support
+    // const me = this
     // renderer.code = async function (code, language) {
     //   if (code.match(/^sequenceDiagram/)||code.match(/^graph/)||code.match(/^gantt/) || language === 'sequenceDiagram' || language === 'graph' || language === 'gantt' && code !== '' || language === 'mermaid') {
     //     return await renderMermaidSvg(code)
@@ -136,8 +105,8 @@ class Parser extends EventEmitter {
 
     renderer.code = function (code, language, escaped) {
       // Mermaid Support
-      if (code.match(/^sequenceDiagram/) || code.match(/^classDiagram/) || code.match(/^gitGraph/) || code.match(/^graph/) || code.match(/^gantt/) || language === 'sequenceDiagram' || language === 'classDiagram' || language === 'graph' ||  language === 'gitGraph' || (language === 'gantt' && code !== '') || language === 'mermaid') {
-        return `<div class="mermaid ${language}">${code}</div>`
+      if (code.match(/^sequenceDiagram/) || code.match(/^classDiagram/) || code.match(/^gitGraph/) || code.match(/^graph/) || code.match(/^gantt/) || language === 'sequenceDiagram' || language === 'classDiagram' || language === 'graph' || language === 'gitGraph' || (language === 'gantt' && code !== '') || language === 'mermaid') {
+        return `<div id="mermaid${mermaidId}" class="mermaid ${language}">${code}</div>`
       }
 
       if (language) {
@@ -155,7 +124,7 @@ class Parser extends EventEmitter {
             language = language.splt('-').pop()
           }
 
-          return `<div class="math ${['tex', 'inline-tex', 'asciimath', 'mathml'].indexOf(language.trim().toLowerCase()) >= 0 ? language : 'tex'}">${code}</div>`
+          return `<div id="math${mathId}" class="math ${['tex', 'inline-tex', 'asciimath', 'mathml'].indexOf(language.trim().toLowerCase()) >= 0 ? language : 'tex'}">${code}</div>`
         }
       }
 
