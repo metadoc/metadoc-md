@@ -1,3 +1,4 @@
+const path = require('path')
 const marked = require('marked')
 const traverse = require('traverse')
 const MetadocPlugin = require('@author.io/metadoc-plugin')
@@ -19,6 +20,8 @@ const MetadocPlugin = require('@author.io/metadoc-plugin')
 class Parser extends MetadocPlugin {
   constructor () {
     super(...arguments)
+
+    this.NAME = require(path.join(__dirname, 'package.json')).name
 
     this.md = {
       pedantic: false,

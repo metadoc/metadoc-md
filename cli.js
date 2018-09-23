@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const fs = require('fs')
+
 const MDParser = require('./index')
 const Parser = new MDParser()
 
@@ -14,11 +14,4 @@ Parser.smartlists = Parser.getCLIArg('--smartlists') || true
 Parser.smartypants = Parser.getCLIArg('--smartypants') || false
 Parser.xhtml = Parser.getCLIArg('--xhtml') || false
 
-let source = Parser.getCLIArg('--source')
-
-if (source) {
-  Parser.source = fs.readFileSync(source).toString()
-  Parser.process()
-} else {
-  Parser.monitorStdin()
-}
+Parser.run()
